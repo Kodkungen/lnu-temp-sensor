@@ -10,37 +10,27 @@
 
 import time
 import pycom
+import machine
 from machine import PWM
+from dth import DTH
 from machine import Pin
 from onewire import DS18X20
 from onewire import OneWire
 
 pycom.heartbeat(False)
+pycom.rgbled(0x000008) # blue
+th = DTH(Pin('P3', mode=Pin.OPEN_DRAIN),0)
+pycom.rgbled(0x00FF00)  # Green
+time.sleep(0.5)
 
 pwm = PWM(0,frequency = 200)
 pwm_c = pwm.channel(0, pin = 'P11', duty_cycle = 0)
-#DS18B20 data line connected to pin P21
-ow = OneWire(Pin('P10'))
-temp = DS18X20(ow)
 
 while True:
-    temp_reading = temp.read_temp_async()
-
-    if temp_reading != None:
-      if temp_reading < 30:
-        pycom.rgbled(0x7f7f00 + int (temp_reading*200))
-        print(temp_reading)
-    temp.start_conversion()
-    time.sleep(1)
-
-
-    pycom.rgbled(0xFF0000)  # Red
-    time.sleep(0.1)
-    pycom.rgbled(0x00FF00)  # Green
-    time.sleep(0.1)
-    pycom.rgbled(0x0000FF)  # Blue
-    pwm_c.duty_cycle(0.5)
-    time.sleep(0.1)
-    pwm_c.duty_cycle(0)
-
-    
+      result = th.read()  
+      if result.is_valid():
+         pycom.rgbled(0x001000) # green
+         print("Temperature: %d C" % result.temperature)
+         print("Humidity: %d %%" % result.humidity)
+         time.sleep(0.1)
+  
