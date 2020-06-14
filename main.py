@@ -20,7 +20,7 @@ from onewire import OneWire
 
 adc = ADC()
 apin = adc.channel(pin='P16', attn=ADC.ATTN_11DB)
-
+  
 def reading():
    avg = 0
    _AVG_NUM = const(100)
@@ -28,6 +28,7 @@ def reading():
        avg += apin()
    avg /= _AVG_NUM
    return(avg)
+
 while True:
     analog_val = reading()
     print(analog_val)
