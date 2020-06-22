@@ -25,7 +25,7 @@ def connect_lora():
     # join a network using OTAA (Over the Air Activation)
     lora.join(activation=LoRa.OTAA, auth=(app_eui, app_key), timeout=0)
     while not lora.has_joined():
-        print('Not yet joined...')
+        print('Not yet sjoined...')
         pycom.rgbled(0xcc00ff)
         time.sleep(3)
         pycom.rgbled(0x000000)
