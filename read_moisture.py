@@ -7,9 +7,20 @@ from machine import ADC
 from machine import Pin
 
 adc = ADC()
-apin = adc.channel(pin = 'P15', attn = ADC.ATTN_11DB) 
+apin = adc.channel(pin = 'P15', attn = ADC.ATTN_11DB)
+apin_plantTwo = adc.channel(pin = 'P13', attn = ADC.ATTN_11DB)
+apin_plantThree = adc.channel(pin = 'P17', attn = ADC.ATTN_11DB)
 
-def value():
-    analog_val = apin()
+
+def moisturePlantOne():
+    plantOne_val = apin()
     #print("Phoresistor %d" % analog_val)
-    return analog_val
+    return plantOne_val
+
+def moisturePlantTwo():
+   plantTwo_val = apin_plantTwo()
+   return plantTwo_val
+
+def moisturePlantThree():
+   plantThree_val = apin_plantThree()
+   return plantThree_val

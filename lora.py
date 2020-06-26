@@ -1,10 +1,14 @@
 from network import LoRa
+from machine import PWM
 import socket
 import time
 import ubinascii
 import keys
 import pycom
+import successJoin
+
 pycom.heartbeat(False)
+
 
 # Initialise LoRa in LORAWAN mode.
 # Please pick the region that matches where you are using the device:
@@ -25,18 +29,19 @@ def connect_lora():
     # join a network using OTAA (Over the Air Activation)
     lora.join(activation=LoRa.OTAA, auth=(app_eui, app_key), timeout=0)
     while not lora.has_joined():
-        print('Not yet sjoined...')
+        print('Not yet joined...')
         pycom.rgbled(0xcc00ff)
         time.sleep(3)
         pycom.rgbled(0x000000)
         time.sleep(0.5)
 
     print("Joined network")
-    for n in range(3):
-        pycom.rgbled(0x2bff00)
-        time.sleep(1)
-        pycom.rgbled(0x000000)
-        time.sleep(0.5)
+    pycom.rgbled(0x2bff00)
+    test = successJoin.value()
+    time.sleep(1)
+    pycom.rgbled(0x000000)
+    time.sleep(0.5)
+        
 
     # create a LoRa socket and make object global for other functions.
     global s
@@ -44,3 +49,5 @@ def connect_lora():
 
     # set the LoRaWAN data rate
     s.setsockopt(socket.SOL_LORA, socket.SO_DR, 5)
+    
+    print("Starting....")

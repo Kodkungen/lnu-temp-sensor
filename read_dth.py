@@ -8,7 +8,7 @@ import time
 th = DTH(Pin('P3', mode=Pin.OPEN_DRAIN), 0)
 time.sleep(1)
 
-def value():
+def value():    
     result = th.read()
     #print("Temperature: %d C" % result.temperature)	
     #print("Humidity: %d %%" % result.humidity)
