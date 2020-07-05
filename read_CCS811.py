@@ -19,7 +19,8 @@ def value():
     ccs.data_ready() # Make a reading
     co2 = ccs.eCO2
     voc = ccs.tVOC
-    print(co2,voc)
+    print("Co2 %d" % co2)
+    print("Voc %d" % voc)
     if co2 > 399:    # just to filter out faulty readings
         return(co2,voc)
         

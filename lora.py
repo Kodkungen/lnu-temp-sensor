@@ -49,5 +49,3 @@ def connect_lora():
 
     # set the LoRaWAN data rate
     s.setsockopt(socket.SOL_LORA, socket.SO_DR, 5)
-    
-    print("Starting....")
