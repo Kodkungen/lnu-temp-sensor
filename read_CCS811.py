@@ -21,6 +21,6 @@ def value():
     voc = ccs.tVOC
     print("Co2 %d" % co2)
     print("Voc %d" % voc)
-    if co2 > 399:    # just to filter out faulty readings
+    if co2 > 399:    # Filter out faulty readings
         return(co2,voc)
         

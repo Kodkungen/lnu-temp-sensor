@@ -52,13 +52,13 @@ def send_value():
         
         package = (struct.pack('>H',int(co2) ) +
                    struct.pack('>H',int(voc) ) +
-                   struct.pack('>H',int( (photoRes) * (65536/4096) )) +
-                   struct.pack('>H',int( (soilMoisturePlantOne) * (65536/4096) ))  +
-                   struct.pack('>H',int( (soilMoisturePlantTwo) * (65536/4096) )) +
-                   struct.pack('>H',int( (soilMoisturePlantThree) * (65536/4096) )) +
-                   struct.pack('>H',int( (waterLevelPlantOne) * (65536/4096) )) +
-                   struct.pack('>H',int( (waterLevelPlantTwo) * (65536/4096) )) +
-                   struct.pack('>H',int( (waterlevelPlantThree) * (65536/4096) )) +
+                   struct.pack('>B',int( (photoRes) * (256/256) )) +
+                   struct.pack('>B',int( (soilMoisturePlantOne) * (256/256) ))  +
+                   struct.pack('>B',int( (soilMoisturePlantTwo) * (256/256) )) +
+                   struct.pack('>B',int( (soilMoisturePlantThree) * (256/256) )) +
+                   struct.pack('>B',int( (waterLevelPlantOne) * (256/256) )) +
+                   struct.pack('>B',int( (waterLevelPlantTwo) * (256/256) )) +
+                   struct.pack('>B',int( (waterlevelPlantThree) * (256/256) )) +
                    struct.pack('>B',int( (dth_T+40) * (256/125) )) +
                    struct.pack('>B',int( (dth_RH) * (256/100) )) 
                    ) 
