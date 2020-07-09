@@ -1,14 +1,37 @@
 function Decoder(bytes, port) {
-    // Decode an uplink message from a buffer
-    // (array) of bytes to an object of fields.
 
-    // byte 7 temp from dht
-    var dth_temp = bytes[1];
-    // byte 8 RH from dht
-    var dth_RH = bytes[2];
+  // byte 0,1 are for co2. No need of signed, and range of sensor is 400-8192.
+  var co2 = (bytes[0] << 8) | bytes[1];
+  // byte 2,3 are for VOC. range 0-1187de
+  var voc = (bytes[2] << 8) | bytes[3];
+
+    var photo_res = bytes[4];
+
+    var soilMoisturePlantOne = bytes[5];
+    var soilMoisturePlantTwo = bytes[6];
+    var soilMoisturePlantThree = bytes[7];
+    
+    var waterLevelPlantOne = bytes[8];
+    var waterLevelPlantTwo = bytes[9];
+    var waterLevelPlantThree = bytes[10];
+
+    // byte 0 temp from dht
+    var dht_temp = bytes[11];
+    // byte 1 RH from dht
+    var dht_RH = bytes[12];
+  
 
     return {
-        dth_temp: (dth_temp) / (256 / 125) - 40,
-        dth_RH: dth_RH / (256 / 100)
-    }
+        co2: co2,
+        voc: voc,
+        photo_res: (photo_res * 16),
+        soilMoisturePlantOne: (soilMoisturePlantOne * 16),
+        soilMoisturePlantTwo: (soilMoisturePlantTwo * 16),
+        soilMoisturePlantThree: (soilMoisturePlantThree * 16),
+        waterLevelPlantOne: (waterLevelPlantOne * 16),
+        waterLevelPlantTwo: (waterLevelPlantTwo * 16),
+        waterLevelPlantThree: (waterLevelPlantThree * 16),
+        dht_temp: (dht_temp) / (256 / 125) - 40,
+        dht_RH: dht_RH / (256 / 100),
+    };
 }
