@@ -1,3 +1,5 @@
+#PLAYING SUPER MARIO! : Inspiration from : https://forum.pycom.io/topic/802/example-pwm-mariobros
+
 import time
 from machine import Pin,  PWM
 

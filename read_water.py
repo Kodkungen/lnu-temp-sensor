@@ -2,6 +2,8 @@ import time
 from machine import ADC
 from machine import Pin
 
+#ADC READING
+
 adc = ADC()
 apin = adc.channel(pin = 'P14', attn = ADC.ATTN_11DB) 
 apin_2 = adc.channel(pin = 'P18', attn = ADC.ATTN_11DB)

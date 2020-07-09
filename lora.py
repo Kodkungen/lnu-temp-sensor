@@ -1,3 +1,5 @@
+#LoRa config - https://github.com/iot-lnu/applied-iot-20/tree/master/sensor-examples
+
 from network import LoRa
 from machine import PWM
 import socket

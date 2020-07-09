@@ -1,3 +1,5 @@
+# Taken from https://github.com/iot-lnu/applied-iot-20/tree/master/sensor-examples
+
 from dth import DTH
 from machine import Pin
 import time
@@ -6,7 +8,7 @@ import time
 # Type 1 = dht22
 
 th = DTH(Pin('P3', mode=Pin.OPEN_DRAIN), 0)
-time.sleep(1)
+time.sleep(3)
 
 def value():    
     result = th.read()

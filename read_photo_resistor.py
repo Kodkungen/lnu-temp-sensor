@@ -1,10 +1,10 @@
-#Get values from the water & moisture sensor
 
-#När man belyser fotoresistor, förändras dess resistans och med detta förändras strömmen i kretsen. Spänningen på resistansen.
 
 import time
 from machine import ADC
 from machine import Pin
+
+#ADC READING
 
 adc = ADC()
 apin = adc.channel(pin = 'P16', attn = ADC.ATTN_11DB) 

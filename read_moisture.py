@@ -1,10 +1,12 @@
+# Taken from https://github.com/iot-lnu/applied-iot-20/tree/master/sensor-examples
+
 import time
 from machine import ADC
 from machine import Pin
 
 """ For testing
 
-# voltage = (apin.voltage() + apin.voltage() + apin.voltage() + apin.voltage()) / 4 # average 4
+# voltage = (apin.voltage() + apin.voltage() + apin.voltage() + apin.voltage()) / 4
   print("VOLT moisture plant A %d " % voltage) """
 
 adc = ADC()
